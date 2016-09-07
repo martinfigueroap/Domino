@@ -22,8 +22,10 @@ public class Example
 
 		Tile rndTile1 = domino.getRandomTile(); // Get a random tile from the domino
 		Tile rndTile2 = domino.getRandomTile(Tile.Side.top, 0); // Get a random tile from the domino with the top value = 0
+		Tile rndTile3 = domino.getRandomTile(Tile.Side.bottom, 4); // Get a random tile from the domino with the top value = 0
 		System.out.println("\nRandom Tile 1: " + rndTile1);
 		System.out.println("\nRandom Tile 2: " + rndTile2);
+		System.out.println("\nRandom Tile 3: " + rndTile3);
 
 		Tile[][] players = domino.distribute(3); // Distribute the domino tiles to 3 players (this does not follow the dominos rules)
 		// The amount of tiles for every player is the same; if tiles remain, they are ignored
