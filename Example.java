@@ -18,7 +18,7 @@ public class Example
 		domino.show(); // Prints all the domino tiles
 		domino.messUp(); // Randomly shuffles the domino tiles
 		System.out.println("\nMessed up domino:");
-		domino.show(); // Prints the messed up domino
+		domino.show(); // Prints all the tiles of the scrambled domino
 
 		Tile rndTile1 = domino.getRandomTile(); // Get a random tile from the domino
 		Tile rndTile2 = domino.getRandomTile(Tile.Side.top, 0); // Get a random tile from the domino with the top value = 0
