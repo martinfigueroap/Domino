@@ -21,7 +21,7 @@ public class Example
 		domino.show(); // Prints the messed up domino
 
 		Tile rndTile1 = domino.getRandomTile(); // Get a random tile from the domino
-		Tile rndTile2 = domino.getRandomTile(Tile.Side.top, 0); // Get a random tile from the domino with the top value = 4
+		Tile rndTile2 = domino.getRandomTile(Tile.Side.top, 0); // Get a random tile from the domino with the top value = 0
 		System.out.println("\nRandom Tile 1: " + rndTile1);
 		System.out.println("\nRandom Tile 2: " + rndTile2);
 
