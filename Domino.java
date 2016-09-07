@@ -24,12 +24,7 @@ public class Domino
 		Tile t = new Tile(top, bottom);
 
 		for(Tile tile : tiles)
-		{
-			if(tile.isEqual(t))
-			{
-				return t;
-			}
-		}
+			if(tile.isEqual(t)) return t;
 
 		return null;
 	}
@@ -37,10 +32,7 @@ public class Domino
 	public Tile getTile(Tile t)
 	{
 		for(Tile tile : tiles)
-		{
-			if(tile.isEqual(t))
-				return t;
-		}
+			if(tile.isEqual(t)) return t;
 
 		return null;
 	}
@@ -60,8 +52,7 @@ public class Domino
 				found = true;
 				position = pos;
 			}
-			else if(t.isGreater(tiles[pos]))
-				start = pos + 1;
+			else if(t.isGreater(tiles[pos])) start = pos + 1;
 			else end = pos - 1;
 		}
 
@@ -82,8 +73,7 @@ public class Domino
 				found = true;
 				position = pos;
 			}
-			else if(t.isGreater(tiles[pos]))
-				start = pos + 1;
+			else if(t.isGreater(tiles[pos])) start = pos + 1;
 			else end = pos - 1;
 		}
 
@@ -96,8 +86,9 @@ public class Domino
 		int r = 0;
 		for(int i = 0; i < tiles.length; i++)
 		{
-			do { r = random.nextInt(tiles.length); }
-			while (messed[r] != null);
+			do {
+				r = random.nextInt(tiles.length);
+			} while (messed[r] != null);
 
 			messed[r] = tiles[i];
 		}
@@ -150,8 +141,9 @@ public class Domino
 			Tile[] tilesDist = new Tile[amount];
 			for(int j = 0; j < amount; j++)
 			{
-				do { r = random.nextInt(tiles.length); }
-				while (used[r]);
+				do {
+					r = random.nextInt(tiles.length);
+				} while (used[r]);
 				used[r] = true;
 				tilesDist[j] = tiles[r];
 			}
@@ -165,7 +157,6 @@ public class Domino
 
 	public void show()
 	{
-		for(Tile t : tiles)
-			System.out.println(t);
+		for(Tile t : tiles) System.out.println(t);
 	}
 }
