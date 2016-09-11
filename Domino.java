@@ -155,6 +155,11 @@ public class Domino
 		return distribution;
 	}
 
+	public Tile[] getTiles()
+	{
+		return tiles;
+	}
+
 	public void show()
 	{
 		for(Tile t : tiles) System.out.println(t);
