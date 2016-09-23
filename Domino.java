@@ -128,6 +128,28 @@ public class Domino
 		return possible.get(random.nextInt(possible.size()));
 	}
 
+	public Tile[] getRandomTiles(int n)
+	{
+		if(n > 0 && n <= 28)
+		{
+			Tile[] array = new Tile[n];
+			boolean[] used = new boolean[tiles.length];
+			for(int i = 0; i < used.length; i++) used[i] = false;
+
+			for(int i = 0; i < n; i++)
+			{
+				int index;
+				do {
+					index = random.nextInt(28);
+				} while(used[index]);
+				array[i] = tiles[index];
+			}
+
+			return array;
+		}
+		else return null;
+	}
+
 	public Tile[][] distribute(int n)
 	{
 		boolean[] used = new boolean[tiles.length];
@@ -153,6 +175,49 @@ public class Domino
 		}
 
 		return distribution;
+	}
+
+	public Tile[] verifyMissing(Tile[][] distrib)
+	{
+		List<Tile> missing = new ArrayList<Tile>();
+		for(Tile t : tiles)
+		{
+			boolean found = false;
+			for(int i = 0; i < distrib.length; i++)
+			{
+				for(int j = 0; j < distrib[i].length; j++)
+				{
+					if(distrib[i][j].isEqual(t))
+						found = true;
+				}
+			}
+
+			if(!found) missing.add(t);
+		}
+
+		Tile[] array = new Tile[missing.size()];
+		for(int i = 0; i < missing.size(); i++) array[i] = missing.get(i);
+		return array;
+	}
+
+	public Tile[] verifyMissing(Tile[] distrib)
+	{
+		List<Tile> missing = new ArrayList<Tile>();
+		for(Tile t : tiles)
+		{
+			boolean found = false;
+			for(int i = 0; i < distrib.length; i++)
+			{
+				if(distrib[i].isEqual(t))
+					found = true;
+			}
+
+			if(!found) missing.add(t);
+		}
+
+		Tile[] array = new Tile[missing.size()];
+		for(int i = 0; i < missing.size(); i++) array[i] = missing.get(i);
+		return array;
 	}
 
 	public Tile[] getTiles()
