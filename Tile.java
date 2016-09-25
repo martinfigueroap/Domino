@@ -69,7 +69,7 @@ public class Tile
 
 	public String toString()
 	{
-		return "[" + top + " / " + bottom +  "]";
+		return "[" + top + " | " + bottom +  "]";
 	}
 
 	public String toGraphic()

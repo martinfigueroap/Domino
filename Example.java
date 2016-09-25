@@ -4,12 +4,12 @@ public class Example
 	{
 		Domino domino = new Domino();
 
-		System.out.println("Tile 1: " + domino.getTile(3, 2)); // Output > Tile 1: [2 / 3]
-		System.out.println("Tile 2: " + domino.getTile(new Tile(2, 3))); // Output > Tile 2: [2 / 3]
+		System.out.println("Tile 1: " + domino.getTile(3, 2)); // Output > Tile 1: [2 | 3]
+		System.out.println("Tile 2: " + domino.getTile(new Tile(2, 3))); // Output > Tile 2: [2 | 3]
 		System.out.println("Tile 3: " + domino.getTile(1, 7)); // Output > Tile 3: null
 		System.out.println("Tile 4: " + domino.getIndexOf(3, 2)); // Output > Tile 4: 8
 		System.out.println("Tile 5: " + domino.getIndexOf(new Tile(2, 3))); // Output > Tile 5: 8
-		System.out.println("Tile 6: " + domino.getAt(8)); // Output > Tile 6: [2 / 3]
+		System.out.println("Tile 6: " + domino.getAt(8)); // Output > Tile 6: [2 | 3]
 		System.out.println("Tile 7: " + domino.getAt(30)); // Output > Tile 7: null
 
 		System.out.println("\nDomino:");
