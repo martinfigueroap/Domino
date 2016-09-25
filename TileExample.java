@@ -10,8 +10,8 @@ public class TileExample
 		System.out.println("Bottom: " + tile.getBottom()); // Output > Bottom: 5
 
 		System.out.println("Verify if is greater than [5 / 1]: " + tile.isGreater(new Tile(5, 1))); // Output > true
-		System.out.println("Verify if is smaller than [5 / 1]: " + tile.isGreater(new Tile(5, 1))); // Output > false
-		System.out.println("Verify if is equal to [5 / 2]: " + tile.isGreater(new Tile(5, 2))); // Output > true
+		System.out.println("Verify if is smaller than [5 / 1]: " + tile.isSmaller(new Tile(5, 1))); // Output > false
+		System.out.println("Verify if is equal to [5 / 2]: " + tile.isEqual(new Tile(5, 2))); // Output > true
 
 		tile.upsidedown(); // Turns the tile upside down
 		System.out.println("Upside Down Tile: " + tile);
