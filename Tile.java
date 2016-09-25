@@ -10,35 +10,49 @@ public class Tile
 
 	public Tile(int top, int bottom)
 	{
-		if(top <= bottom)
-		{
-			this.top = top;
-			this.bottom = bottom;
-		}
-		else
-		{
-			this.top = bottom;
-			this.bottom = top;
-		}
+		this.top = top;
+		this.bottom = bottom;
 	}
 
-	public boolean isGreater(Tile f)
+	public void upsidedown()
 	{
-		if(bottom > f.getBottom() || (bottom == f.getBottom() && top > f.getTop()))
+		int temp = top;
+		top = bottom;
+		bottom = temp;
+	}
+
+	public boolean isGreater(Tile t)
+	{
+		int topA = (top <= bottom) ? top : bottom,
+			bottomA = (top <= bottom) ? bottom : top;
+		int topB = (t.getTop() < t.getBottom()) ? t.getTop() : t.getBottom(),
+			bottomB = (t.getTop() < t.getBottom()) ? t.getBottom() : t.getTop();
+
+		if(bottomA > bottomB || (bottomA == bottomB && topA > topB))
 			return true;
 		else return false;
 	}
 
-	public boolean isSmaller(Tile f)
+	public boolean isSmaller(Tile t)
 	{
-		if(bottom < f.getBottom() || (bottom == f.getBottom() && top < f.getTop()))
+		int topA = (top <= bottom) ? top : bottom,
+			bottomA = (top <= bottom) ? bottom : top;
+		int topB = (t.getTop() < t.getBottom()) ? t.getTop() : t.getBottom(),
+			bottomB = (t.getTop() < t.getBottom()) ? t.getBottom() : t.getTop();
+
+		if(bottomA < bottomB || (bottomA == bottomB && topA < topB))
 			return true;
 		else return false;
 	}
 
-	public boolean isEqual(Tile f)
+	public boolean isEqual(Tile t)
 	{
-		if(bottom == f.getBottom() && top == f.getTop())
+		int topA = (top <= bottom) ? top : bottom,
+			bottomA = (top <= bottom) ? bottom : top;
+		int topB = (t.getTop() < t.getBottom()) ? t.getTop() : t.getBottom(),
+			bottomB = (t.getTop() < t.getBottom()) ? t.getBottom() : t.getTop();
+
+		if(bottomA == bottomB && topA == topB)
 			return true;
 		else return false;
 	}
@@ -55,12 +69,12 @@ public class Tile
 
 	public String toString()
 	{
-		return top + " / " + bottom;
+		return "[" + top + " / " + bottom +  "]";
 	}
 
 	public String toGraphic()
 	{
-		String[] graphics = {" ", ".", ":", ".:", "::", ":.:", ":::"};
-		return graphics[top] + "|" + graphics[bottom];
+		String[] graphics = {"   ", " . ", " : ", " .:", " ::", ":.:", ":::"};
+		return "[" + graphics[top] + "|" + graphics[bottom] + "]";
 	}
 }

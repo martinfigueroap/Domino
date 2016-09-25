@@ -97,6 +97,23 @@ public class Domino
 		tiles = messed;
 	}
 
+	public void sort()
+	{
+		for(int i = 0; i < tiles.length - 1; i++)
+		{
+			int min = i;
+			for(int j = i; j < tiles.length; j++)
+			{
+				if(tiles[j].isSmaller(tiles[min]))
+					min = j;
+			}
+
+			Tile temp = tiles[i];
+			tiles[i] = tiles[min];
+			tiles[min] = temp;
+		}
+	}
+
 	public Tile getAt(int i)
 	{
 		return (i >= 0 && i < tiles.length) ? tiles[i] : null;
@@ -109,23 +126,9 @@ public class Domino
 
 	public Tile getRandomTile(Tile.Side side, int i)
 	{
-		List<Tile> possible = new ArrayList<Tile>();
-
-		switch(side)
-		{
-			case top:
-				for(Tile tile : tiles)
-					if(tile.getTop() == i)
-						possible.add(tile);
-				break;
-			case bottom:
-				for(Tile tile : tiles)
-					if(tile.getBottom() == i)
-						possible.add(tile);
-				break;
-		}
-
-		return possible.get(random.nextInt(possible.size()));
+		int topValue = (side == Tile.Side.top) ? i : random.nextInt(7);
+		int bottomValue = (side == Tile.Side.bottom) ? i : random.nextInt(7);
+		return getTile(topValue, bottomValue);
 	}
 
 	public Tile[] getRandomTiles(int n)
@@ -183,9 +186,9 @@ public class Domino
 		for(Tile t : tiles)
 		{
 			boolean found = false;
-			for(int i = 0; i < distrib.length; i++)
+			for(int i = 0; i < distrib.length && !found; i++)
 			{
-				for(int j = 0; j < distrib[i].length; j++)
+				for(int j = 0; j < distrib[i].length && !found; j++)
 				{
 					if(distrib[i][j].isEqual(t))
 						found = true;
@@ -228,5 +231,10 @@ public class Domino
 	public void show()
 	{
 		for(Tile t : tiles) System.out.println(t);
+	}
+
+	public void showGraphic()
+	{
+		for(Tile t : tiles) System.out.println(t.toGraphic());
 	}
 }
